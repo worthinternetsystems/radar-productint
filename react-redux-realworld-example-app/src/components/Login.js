@@ -10,8 +10,6 @@ import {
 } from '../constants/actionTypes';
 import useAnalyticsEventTracker from './GaAnalytics';
 
-const gaEventTracker = useAnalyticsEventTracker('Login to App');
-
 const mapStateToProps = (state) => ({ ...state.auth });
 
 const mapDispatchToProps = (dispatch) => ({
