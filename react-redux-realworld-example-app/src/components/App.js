@@ -16,7 +16,7 @@ import { store } from '../store';
 import { push } from 'react-router-redux';
 import ReactGA from 'react-ga';
 
-const TRACKING_ID = 'G-CYL2672VPP';
+const TRACKING_ID = 'UA-234387152-322913990';
 ReactGA.initialize(TRACKING_ID);
 
 const mapStateToProps = (state) => {
