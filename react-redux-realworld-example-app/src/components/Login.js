@@ -29,8 +29,8 @@ class Login extends React.Component {
     this.changePassword = (ev) => this.props.onChangePassword(ev.target.value);
     this.submitForm = (email, password) => (ev) => {
       ev.preventDefault();
-      const gaEventTracker = useAnalyticsEventTracker('Login to App');
-      gaEventTracker('User logged in--->');
+      const gaEventTracker = useAnalyticsEventTracker('login');
+      gaEventTracker('loginapp');
       this.props.onSubmit(email, password);
     };
   }
