@@ -8,7 +8,7 @@ import {
   LOGIN,
   LOGIN_PAGE_UNLOADED,
 } from '../constants/actionTypes';
-import useAnalyticsEventTracker from './GaAnalytics';
+import ReactGA from 'react-ga4';
 
 const mapStateToProps = (state) => ({ ...state.auth });
 
@@ -29,8 +29,10 @@ class Login extends React.Component {
     this.changePassword = (ev) => this.props.onChangePassword(ev.target.value);
     this.submitForm = (email, password) => (ev) => {
       ev.preventDefault();
-      const gaEventTracker = useAnalyticsEventTracker('login');
-      gaEventTracker('loginapp');
+      ReactGA.event({
+        category: 'custom event',
+        action: 'logged in',
+      });
       this.props.onSubmit(email, password);
     };
   }
