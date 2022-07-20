@@ -14,7 +14,7 @@ import Register from '../components/Register';
 import Settings from '../components/Settings';
 import { store } from '../store';
 import { push } from 'react-router-redux';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 const TRACKING_ID = 'G-CYL2672VPP';
 ReactGA.initialize(TRACKING_ID);
