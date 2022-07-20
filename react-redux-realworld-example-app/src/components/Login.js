@@ -9,6 +9,8 @@ import {
   LOGIN_PAGE_UNLOADED,
 } from '../constants/actionTypes';
 import ReactGA from 'react-ga4';
+import * as amplitude from '@amplitude/analytics-browser';
+
 
 const mapStateToProps = (state) => ({ ...state.auth });
 
@@ -29,10 +31,17 @@ class Login extends React.Component {
     this.changePassword = (ev) => this.props.onChangePassword(ev.target.value);
     this.submitForm = (email, password) => (ev) => {
       ev.preventDefault();
+
+      // google analytics 
       ReactGA.event({
         category: 'custom event',
         action: 'logged in',
       });
+
+      // amplitude
+      amplitude.init('9d8d8b9ad2b416f5b293e09e5bb10590');
+      amplitude.track('logged in');
+      
       this.props.onSubmit(email, password);
     };
   }
