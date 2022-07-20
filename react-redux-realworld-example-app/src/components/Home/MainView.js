@@ -58,6 +58,10 @@ const TagFilterTab = (props) => {
   );
 };
 
+const methodDoesNotExist = () => {
+  throw new Error("this method does not exist");
+};
+
 const mapStateToProps = (state) => ({
   ...state.articleList,
   tags: state.home.tags,
