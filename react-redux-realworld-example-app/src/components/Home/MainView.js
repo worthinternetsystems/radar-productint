@@ -89,7 +89,9 @@ const MainView = (props) => {
           <TagFilterTab tag={props.tag} />
         </ul>
       </div>
-      <button onClick={methodDoesNotExist}>Break the world</button>
+      <button id="broken-button" onClick={methodDoesNotExist}>
+        Break the world
+      </button>
       <ArticleList
         pager={props.pager}
         articles={props.articles}
