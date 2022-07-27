@@ -36,3 +36,19 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         SOURCE_DIR: "./react-redux-realworld-example-app/build"
+    - name: Update sentry releases
+      working-directory: ./react-redux-realworld-example-app
+      run: |   
+        # Install the cli
+        curl -sL https://sentry.io/get-cli/ | SENTRY_CLI_VERSION="2.2.0" bash
+        # Setup configuration values
+        SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+        SENTRY_ORG=radar-productint
+        SENTRY_PROJECT=react
+        VERSION=`sentry-cli releases propose-version`
+        # Workflow to create releases
+        sentry-cli releases new "$VERSION"
+        sentry-cli releases set-commits "$VERSION" --auto
+        sentry-cli releases finalize "$VERSION"
+        
+
