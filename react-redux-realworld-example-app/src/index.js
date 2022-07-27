@@ -12,7 +12,13 @@ import App from "./components/App";
 Sentry.init({
   dsn: "https://65f6643fadb448c38a698f1fe62331e0@o1326996.ingest.sentry.io/6587593",
   integrations: [new BrowserTracing()],
-
+  beforeSend(event, _hint) {
+    // Check if it is an exception, and if so, show the report dialog
+    if (event.exception) {
+      Sentry.showReportDialog({ eventId: event.event_id });
+    }
+    return event;
+  },
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
   // We recommend adjusting this value in production
