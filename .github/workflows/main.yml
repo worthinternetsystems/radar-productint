@@ -42,10 +42,10 @@ jobs:
         # Install the cli
         curl -sL https://sentry.io/get-cli/ | SENTRY_CLI_VERSION="2.2.0" bash
         # Setup configuration values
-        SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
-        SENTRY_ORG="radar-productint"
-        SENTRY_PROJECT=react
-        VERSION=`sentry-cli releases propose-version`
+        export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+        export SENTRY_ORG="radar-productint"
+        export SENTRY_PROJECT=react
+        export VERSION=`sentry-cli releases propose-version`
         # Workflow to create releases
         sentry-cli releases new "$VERSION"
         sentry-cli releases set-commits "$VERSION" --auto
