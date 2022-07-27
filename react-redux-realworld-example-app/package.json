@@ -7,10 +7,11 @@
     "react-scripts": "^4.0.3"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^1.0.2",
     "@sentry/react": "^7.7.0",
     "@sentry/tracing": "^7.7.0",
-    "@amplitude/analytics-browser": "^1.0.2",
     "history": "^4.6.3",
+    "logrocket-react": "^1.0.0",
     "marked": "^0.3.6",
     "prop-types": "^15.5.10",
     "react": "^16.3.0",
